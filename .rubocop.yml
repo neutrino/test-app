@@ -1,0 +1,17 @@
+require:
+  - standard
+  - rubocop-rails
+  - rubocop-rspec
+
+inherit_gem:
+  standard: config/base.yml
+
+AllCops:
+  NewCops: enable
+
+Rails:
+  Enabled: true
+RSpec:
+  Enabled: true
+RSpec/MultipleExpectations:
+  Enabled: false

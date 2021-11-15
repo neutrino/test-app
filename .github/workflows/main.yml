@@ -12,10 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     
     env:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
       RAILS_ENV: test
-      DATABASE_URL: "postgresql://localhost/test_app_test"
+      DATABASE_URL: "postgres://postgres:postgres@localhost/test_app_test"
     
     services:
       postgres:

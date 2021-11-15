@@ -37,5 +37,3 @@ directories:
     IrresponsibleModule:
       enabled: false
 
-Attribute:
-  enabled: false

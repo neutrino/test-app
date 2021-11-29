@@ -33,16 +33,15 @@ jobs:
         run: |
           sudo apt-get -yqq install libpq-dev
 
-      - name: YARN
-        uses: bahmutov/npm-install@v1
-        with:
-          install-command: yarn --frozen-lockfile --silent
       
       - name: Setup Ruby
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0.6
+          ruby-version: "3.0.6"
           bundler-cache: true 
+
+      - name: YARN install
+        uses: bahmutov/npm-install@v1
 
       - name: Build App
         run: |
@@ -50,4 +49,4 @@ jobs:
           
       - name: Run RSpec
         run: |
-          bundle exec rspec
+          bundle exec rails spec

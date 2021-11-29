@@ -27,7 +27,7 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       - name: Install PostgreSQL 11 client
         run: |
@@ -39,9 +39,10 @@ jobs:
           install-command: yarn --frozen-lockfile --silent
       
       - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
-          bundler-cache: true
+          ruby-version: 3.0.6
+          bundler-cache: true 
 
       - name: Build App
         run: |

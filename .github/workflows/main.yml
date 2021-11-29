@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     
     env:
-      RAILS_ENV: test
       DATABASE_URL: "postgres://postgres:postgres@localhost/test_app_test"
     
     services:
@@ -42,7 +41,6 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.0.2"
           bundler-cache: true
 
       - name: Build App

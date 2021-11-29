@@ -29,6 +29,9 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v1
+        with:
+          ruby-version: "3.0.2"
+          bundler-cache: true
 
       - name: Install PostgreSQL 11 client
         run: |
@@ -38,15 +41,16 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.0.2"
-          # bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+
+      - name: YARN
+        uses: bahmutov/npm-install@v1
+        with:
+          install-command: yarn --frozen-lockfile --silent
       
       - name: Build App
         run: |
-          cp config/database.yml.sample config/database.yml
-          yarn install
-          bundle install
           bundle exec rails db:setup
 
       - name: Run RSpec
         run: |
-          bundle exec rspec
+          bundle exec rails spec

@@ -29,28 +29,26 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v1
-        with:
-          ruby-version: "3.0.2"
-          bundler-cache: true
 
       - name: Install PostgreSQL 11 client
         run: |
           sudo apt-get -yqq install libpq-dev
-
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "3.0.2"
 
       - name: YARN
         uses: bahmutov/npm-install@v1
         with:
           install-command: yarn --frozen-lockfile --silent
       
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.0.2"
+          bundler-cache: true
+
       - name: Build App
         run: |
           bundle exec rails db:setup
-
+          
       - name: Run RSpec
         run: |
-          bundle exec rails spec
+          bundle exec rspec
